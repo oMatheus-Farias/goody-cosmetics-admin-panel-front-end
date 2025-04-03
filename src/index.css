@@ -25,6 +25,8 @@
   --color-goodycosmetics-secondary-700: #afafaf;
   --color-goodycosmetics-secondary-800: #888888;
   --color-goodycosmetics-secondary-900: #686868;
+
+  --font-family-sans: 'Roboto', sans-serif;
 }
 
 :root {
@@ -136,9 +138,9 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring/50 font-family-sans;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-goodycosmetics-secondary-500 text-foreground;
   }
 }
