@@ -1,7 +1,11 @@
+import { BrowserRouter } from 'react-router-dom'
+
+import AppRoutes from './routes'
+
 export default function App() {
   return (
-    <div>
-      <p>app page</p>
-    </div>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   )
 }
