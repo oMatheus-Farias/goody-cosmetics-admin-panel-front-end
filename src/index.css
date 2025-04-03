@@ -1,7 +1,31 @@
 @import 'tailwindcss';
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-goodycosmetics-primary-50: #f9f5f3;
+  --color-goodycosmetics-primary-100: #ebe1da;
+  --color-goodycosmetics-primary-200: #e2d2c9;
+  --color-goodycosmetics-primary-300: #d4bdb0;
+  --color-goodycosmetics-primary-400: #ccb1a1;
+  --color-goodycosmetics-primary-500: #bf9d89;
+  --color-goodycosmetics-primary-600: #ae8f7d;
+  --color-goodycosmetics-primary-700: #886f61;
+  --color-goodycosmetics-primary-800: #69564b;
+  --color-goodycosmetics-primary-900: #50423a;
+
+  --color-goodycosmetics-secondary-50: #fefefe;
+  --color-goodycosmetics-secondary-100: #fdfdfd;
+  --color-goodycosmetics-secondary-200: #fbfbfb;
+  --color-goodycosmetics-secondary-300: #fafafa;
+  --color-goodycosmetics-secondary-400: #f9f9f9;
+  --color-goodycosmetics-secondary-500: #f7f7f7;
+  --color-goodycosmetics-secondary-600: #e1e1e1;
+  --color-goodycosmetics-secondary-700: #afafaf;
+  --color-goodycosmetics-secondary-800: #888888;
+  --color-goodycosmetics-secondary-900: #686868;
+}
 
 :root {
   --radius: 0.625rem;
