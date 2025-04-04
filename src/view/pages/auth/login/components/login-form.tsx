@@ -62,7 +62,7 @@ export default function LoginForm() {
                     aria-label="E-mail"
                     placeholder="Digite seu e-mail"
                     {...form.register('email')}
-                    className={`focus-visible:ring-goodycosmetics-primary-200 h-12 rounded-[10px] border bg-white font-light placeholder:text-gray-400 ${form.formState.errors.email ? 'border-rose-500' : 'border-goodycosmetics-primary-400'}`}
+                    className={`h-12 rounded-[10px] border bg-white font-light placeholder:text-gray-400 ${form.formState.errors.email ? 'border-rose-500 focus-visible:ring-rose-300' : 'border-goodycosmetics-primary-400 focus-visible:ring-goodycosmetics-primary-200'}`}
                   />
                 </div>
               </FormControl>
@@ -90,7 +90,7 @@ export default function LoginForm() {
                     Senha
                   </Label>
                   <div
-                    className={`${form.formState.errors.password ? 'border-rose-500' : 'border-goodycosmetics-primary-400'} has-focus:ring-goodycosmetics-primary-200 relative flex h-12 items-center rounded-[10px] border bg-white pr-3 font-light has-focus:ring-3`}
+                    className={`${form.formState.errors.password ? 'border-rose-500 has-focus-visible:ring-rose-300/80' : 'border-goodycosmetics-primary-400 has-focus:ring-goodycosmetics-primary-200'} relative flex h-12 items-center rounded-[10px] border bg-white pr-3 font-light has-focus:ring-[3px]`}
                   >
                     <Input
                       id="password"
