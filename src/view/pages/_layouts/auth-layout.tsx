@@ -5,7 +5,7 @@ import backgroundImage from '../../assets/background-image.png'
 export default function AuthLayout() {
   return (
     <div
-      className={`h-screen`}
+      className="h-screen"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
