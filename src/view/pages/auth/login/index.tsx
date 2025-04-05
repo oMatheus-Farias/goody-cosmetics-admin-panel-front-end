@@ -11,7 +11,6 @@ export default function LoginPage() {
           description="Gerencie tudo de forma simples e eficiente."
         />
       </div>
-
       <LoginForm />
     </AuthContainer>
   )
