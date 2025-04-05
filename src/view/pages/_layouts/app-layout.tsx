@@ -1,6 +1,15 @@
-import { Outlet } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
+
+import { ROUTES_PATHS } from '@/app/constants/routes-paths'
+import { useAuth } from '@/app/hooks/auth-hooks/use-auth'
 
 export default function AppLayout() {
+  const { signedIn } = useAuth()
+
+  if (!signedIn) {
+    return <Navigate to={ROUTES_PATHS.LOGIN} replace={true} />
+  }
+
   return (
     <div className="flex h-screen flex-col">
       <div className="px-2">header mobile</div>
