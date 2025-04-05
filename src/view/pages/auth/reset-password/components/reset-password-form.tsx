@@ -1,10 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { AlertCircle } from 'lucide-react'
+import { AlertCircle, LoaderCircleIcon } from 'lucide-react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 
 import { toggleVisiblePassword } from '@/app/functions/toggle-visible-password'
+import { useResetPassword } from '@/app/hooks/auth-hooks'
 import { resetPasswordSchema } from '@/app/schemas/auth-schemas/reset-password-schema'
 import { Button } from '@/view/components/ui/button'
 import {
@@ -28,6 +30,8 @@ export type TResetPasswordForm = z.infer<typeof resetPasswordSchema>
 export default function ResetPasswordForm({ token }: IResetPasswordFormProps) {
   const [visibleNewPassword, setVisibleNewPassword] = useState(false)
   const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false)
+  const { resetPasswordFn } = useResetPassword()
+  const navigate = useNavigate()
 
   const form = useForm<TResetPasswordForm>({
     resolver: zodResolver(resetPasswordSchema),
@@ -37,6 +41,8 @@ export default function ResetPasswordForm({ token }: IResetPasswordFormProps) {
     },
   })
 
+  const isPending = form.formState.isSubmitting
+
   return (
     <Form {...form}>
       <form
@@ -44,6 +50,8 @@ export default function ResetPasswordForm({ token }: IResetPasswordFormProps) {
           handleResetPassword({
             data: form.getValues(),
             token,
+            resetPasswordFn,
+            navigate,
           }),
         )}
         className="mt-7 flex w-full flex-col gap-5"
@@ -143,9 +151,15 @@ export default function ResetPasswordForm({ token }: IResetPasswordFormProps) {
         <div className="mt-14 w-full">
           <Button
             type="submit"
+            aria-label="Redefinir senha"
+            disabled={isPending}
             className="bg-goodycosmetics-primary-700 hover:bg-goodycosmetics-primary-800 h-12 w-full rounded-[10px] font-light uppercase transition-all duration-150 ease-linear hover:cursor-pointer"
           >
-            Salvar
+            {isPending ? (
+              <LoaderCircleIcon className="animate-spin" />
+            ) : (
+              'Redefinir senha'
+            )}
           </Button>
         </div>
       </form>
