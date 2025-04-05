@@ -123,7 +123,7 @@ export default function LoginForm() {
                   </div>
                   <Link
                     to={ROUTES_PATHS.FORGOT_PASSWORD}
-                    className={`text-goodycosmetics-primary-700 ${form.formState.errors.password ? '-bottom-12 sm:-bottom-6' : '-bottom-6'} hover:text-goodycosmetics-primary-800 absolute right-0 text-sm font-light underline underline-offset-2 transition-colors duration-150 ease-linear`}
+                    className={`text-goodycosmetics-primary-700 ${form.formState.errors.password ? '-bottom-12' : '-bottom-6'} hover:text-goodycosmetics-primary-800 absolute right-0 text-sm font-light underline underline-offset-2 transition-colors duration-150 ease-linear`}
                   >
                     Esqueci minha senha
                   </Link>
