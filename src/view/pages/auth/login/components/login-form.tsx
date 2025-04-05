@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { AlertCircle } from 'lucide-react'
+import { AlertCircle, LoaderCircle } from 'lucide-react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
@@ -7,6 +7,7 @@ import { z } from 'zod'
 
 import { ROUTES_PATHS } from '@/app/constants/routes-paths'
 import { toggleVisiblePassword } from '@/app/functions/toggle-visible-password'
+import { useAuth } from '@/app/hooks/auth-hooks/use-auth'
 import { loginSchema } from '@/app/schemas/auth-schemas/login-schema'
 import { Button } from '@/view/components/ui/button'
 import {
@@ -25,6 +26,7 @@ export type TLoginForm = z.infer<typeof loginSchema>
 
 export default function LoginForm() {
   const [visiblePassword, setVisiblePassword] = useState(false)
+  const { handleAuthenticated } = useAuth()
 
   const form = useForm<TLoginForm>({
     resolver: zodResolver(loginSchema),
@@ -34,10 +36,17 @@ export default function LoginForm() {
     },
   })
 
+  const isPending = form.formState.isSubmitting
+
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(handleLogin)}
+        onSubmit={form.handleSubmit(() =>
+          handleLogin({
+            data: form.getValues(),
+            handleAuthenticated,
+          }),
+        )}
         className="mt-7 flex w-full flex-col gap-5"
       >
         <FormField
@@ -133,9 +142,11 @@ export default function LoginForm() {
         <div className="mt-14 w-full">
           <Button
             type="submit"
+            aria-label="Acessar"
+            disabled={isPending}
             className="bg-goodycosmetics-primary-700 hover:bg-goodycosmetics-primary-800 h-12 w-full rounded-[10px] font-light uppercase transition-all duration-150 ease-linear hover:cursor-pointer"
           >
-            Acessar
+            {isPending ? <LoaderCircle className="animate-spin" /> : 'Acessar'}
           </Button>
         </div>
       </form>
