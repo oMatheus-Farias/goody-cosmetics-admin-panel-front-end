@@ -1,10 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { AlertCircle } from 'lucide-react'
+import { AlertCircle, LoaderCircle } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { z } from 'zod'
 
 import { ROUTES_PATHS } from '@/app/constants/routes-paths'
+import { useForgotPassword } from '@/app/hooks/auth-hooks'
 import { forgotPasswordSchema } from '@/app/schemas/auth-schemas/forgot-password-schema'
 import { Button } from '@/view/components/ui/button'
 import {
@@ -22,6 +23,8 @@ import { handleForgotPassword } from '../functions/handle-forgot-password'
 export type TForgotPasswordForm = z.infer<typeof forgotPasswordSchema>
 
 export default function ForgotPasswordForm() {
+  const { forgotPasswordFn } = useForgotPassword()
+
   const form = useForm<TForgotPasswordForm>({
     resolver: zodResolver(forgotPasswordSchema),
     defaultValues: {
@@ -29,10 +32,18 @@ export default function ForgotPasswordForm() {
     },
   })
 
+  const isPending = form.formState.isSubmitting
+
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(handleForgotPassword)}
+        onSubmit={form.handleSubmit(() =>
+          handleForgotPassword({
+            email: form.getValues('email'),
+            forgotPasswordFn,
+            form,
+          }),
+        )}
         className="mt-7 flex w-full flex-col gap-5"
       >
         <FormField
@@ -76,9 +87,11 @@ export default function ForgotPasswordForm() {
         <div className="mt-14 w-full">
           <Button
             type="submit"
+            aria-label="Enviar e-mail de recuperação de senha"
+            disabled={isPending}
             className="bg-goodycosmetics-primary-700 hover:bg-goodycosmetics-primary-800 h-12 w-full rounded-[10px] font-light uppercase transition-all duration-150 ease-linear hover:cursor-pointer"
           >
-            Enviar
+            {isPending ? <LoaderCircle className="animate-spin" /> : 'Enviar'}
           </Button>
         </div>
 
