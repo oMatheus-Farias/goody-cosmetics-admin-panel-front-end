@@ -7,6 +7,9 @@ const AppLayout = lazy(() => import('./view/pages/_layouts/app-layout'))
 const AuthLayout = lazy(() => import('./view/pages/_layouts/auth-layout'))
 
 const LoginPage = lazy(() => import('./view/pages/auth/login'))
+const ForgotPasswordPage = lazy(
+  () => import('./view/pages/auth/forgot-password'),
+)
 
 const RegistrationsPage = lazy(() => import('./view/pages/admin/registrations'))
 
@@ -16,6 +19,10 @@ export default function AppRoutes() {
       <Routes>
         <Route element={<AuthLayout />}>
           <Route path={ROUTES_PATHS.LOGIN} element={<LoginPage />} />
+          <Route
+            path={ROUTES_PATHS.FORGOT_PASSWORD}
+            element={<ForgotPasswordPage />}
+          />
         </Route>
         <Route element={<AppLayout />}>
           <Route

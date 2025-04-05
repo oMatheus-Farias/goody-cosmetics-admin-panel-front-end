@@ -2,8 +2,10 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { AlertCircle } from 'lucide-react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 import { z } from 'zod'
 
+import { ROUTES_PATHS } from '@/app/constants/routes-paths'
 import { toggleVisiblePassword } from '@/app/functions/toggle-visible-password'
 import { loginSchema } from '@/app/schemas/auth-schemas/login-schema'
 import { Button } from '@/view/components/ui/button'
@@ -110,6 +112,12 @@ export default function LoginForm() {
                       setIsVisible: setVisiblePassword,
                     })}
                   </div>
+                  <Link
+                    to={ROUTES_PATHS.FORGOT_PASSWORD}
+                    className="text-goodycosmetics-primary-700 hover:text-goodycosmetics-primary-800 text-end text-sm font-light underline underline-offset-2 transition-colors duration-150 ease-linear"
+                  >
+                    Esqueci minha senha
+                  </Link>
                 </div>
               </FormControl>
               {form.formState.errors.password && (
