@@ -11,7 +11,6 @@ export default function ForgotPasswordPage() {
           description="Digite seu e-mail e enviaremos um link para redefinir sua senha."
         />
       </div>
-
       <ForgotPasswordForm />
     </AuthContainer>
   )
