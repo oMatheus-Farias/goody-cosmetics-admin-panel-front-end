@@ -1,7 +1,7 @@
 import { toast } from 'sonner'
 
 import { env } from '@/app/configs/env-config'
-import type { IAuthenticatedProps } from '@/app/services/auth-services/interfaces/auth-interfaces'
+import type { IAuthenticatedProps } from '@/app/services/auth-services/interfaces'
 
 import type { TLoginForm } from '../components/login-form'
 

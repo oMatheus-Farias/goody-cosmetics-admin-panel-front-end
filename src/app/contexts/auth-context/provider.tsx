@@ -3,7 +3,7 @@ import React, { JSX, useLayoutEffect, useState } from 'react'
 import { httpClient } from '@/app/configs/http-client'
 import { STORAGE_KEYS } from '@/app/constants/storage-keys'
 import { useAuthenticated, useRefreshTokens } from '@/app/hooks/auth-hooks'
-import type { IAuthenticatedProps } from '@/app/services/auth-services/interfaces/auth-interfaces'
+import type { IAuthenticatedProps } from '@/app/services/auth-services/interfaces'
 
 import { AuthContext, IAuthContextValue } from './context'
 

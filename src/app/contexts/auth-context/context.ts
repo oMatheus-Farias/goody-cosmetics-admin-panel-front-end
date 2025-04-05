@@ -1,6 +1,6 @@
 import { createContext } from 'react'
 
-import type { IAuthenticatedProps } from '@/app/services/auth-services/interfaces/auth-interfaces'
+import type { IAuthenticatedProps } from '@/app/services/auth-services/interfaces'
 
 export interface IAuthContextValue {
   signedIn: boolean
