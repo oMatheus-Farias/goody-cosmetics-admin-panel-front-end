@@ -25,4 +25,10 @@ export class AuthServices {
     )
     return data
   }
+
+  static async forgotPassword(email: string) {
+    await httpClient.post('/api/users/forgot-password', {
+      email,
+    })
+  }
 }
