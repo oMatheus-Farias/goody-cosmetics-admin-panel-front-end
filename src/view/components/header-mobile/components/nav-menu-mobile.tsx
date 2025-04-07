@@ -1,20 +1,11 @@
-import { DoorOpen, Menu, Settings, ShieldCheck } from 'lucide-react'
+import { Menu } from 'lucide-react'
 import { useState } from 'react'
 
 import { NAVIGATION_LINKS } from '@/app/constants/navigation-links'
+import { useAuth } from '@/app/hooks/auth-hooks'
 
 import NavLink from '../../nav-link'
 import { Button } from '../../ui/button'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuTrigger,
-} from '../../ui/dropdown-menu'
 import { Separator } from '../../ui/separator'
 import {
   Sheet,
@@ -26,10 +17,13 @@ import {
   SheetTrigger,
 } from '../../ui/sheet'
 import UpdatePasswordModal from '../../update-password-modal'
+import LogoutButton from './logout-button'
+import SettingsButton from './settings-button'
 
 export default function NavMenuMobile() {
-  const [dropdownMenuOpen, setdropdownMenuOpen] = useState(false)
+  const [dropdownMenuOpen, setDropdownMenuOpen] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
+  const { handleSignOut, signOutPending } = useAuth()
 
   return (
     <Sheet>
@@ -66,43 +60,16 @@ export default function NavMenuMobile() {
             ))}
           </nav>
         </div>
-        <DropdownMenu
-          open={dropdownMenuOpen}
-          onOpenChange={setdropdownMenuOpen}
-        >
-          <DropdownMenuTrigger asChild>
-            <Button className="flex w-full items-center gap-1 rounded-[8px] bg-gray-100 px-2 py-2 text-gray-600 hover:cursor-pointer hover:bg-gray-200">
-              <Settings className="w-4" aria-label="Configurações" />
-              <span className="text-sm font-normal">Configurações</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56">
-            <DropdownMenuLabel className="text-goodycosmetics-primary-800 text-center">
-              Configurações
-            </DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem
-                className="font-light text-gray-700 hover:cursor-pointer"
-                onSelect={(e) => {
-                  e.preventDefault()
-                  setModalOpen(true)
-                  setdropdownMenuOpen(false)
-                }}
-              >
-                Atualizar minha senha
-                <DropdownMenuShortcut>
-                  <ShieldCheck />
-                </DropdownMenuShortcut>
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <SettingsButton
+          dropdownMenuOpen={dropdownMenuOpen}
+          setDropdownMenuOpen={setDropdownMenuOpen}
+          setModalOpen={setModalOpen}
+        />
 
-        <Button className="flex w-full items-center gap-1 rounded-[8px] bg-gray-100 px-2 py-2 text-gray-600 hover:cursor-pointer hover:bg-gray-200">
-          <DoorOpen className="w-4" aria-label="Sair" />
-          <span className="text-sm font-normal">Sair</span>
-        </Button>
+        <LogoutButton
+          handleSignOut={handleSignOut}
+          signOutPending={signOutPending}
+        />
       </SheetContent>
 
       <UpdatePasswordModal open={modalOpen} onOpenChange={setModalOpen} />
