@@ -15,7 +15,7 @@ export default function NavLink(props: NavLinkProps) {
   return (
     <Link
       data-current={setCurrentData()}
-      className="data-[current=true]:text-goodycosmetics-primary-400 flex items-center gap-2.5 text-sm font-medium text-gray-300 transition-all duration-100 ease-linear hover:text-white"
+      className="data-[current=true]:text-goodycosmetics-primary-800 flex items-center gap-2.5 text-sm font-medium text-gray-300 transition-all duration-100 ease-linear hover:text-gray-400"
       {...props}
     />
   )
