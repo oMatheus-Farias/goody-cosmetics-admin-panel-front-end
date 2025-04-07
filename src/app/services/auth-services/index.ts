@@ -27,6 +27,10 @@ export class AuthServices {
     return data
   }
 
+  static async signOut() {
+    await httpClient.delete('/api/sessions/sign-out')
+  }
+
   static async forgotPassword(email: string) {
     await httpClient.post('/api/users/forgot-password', {
       email,
