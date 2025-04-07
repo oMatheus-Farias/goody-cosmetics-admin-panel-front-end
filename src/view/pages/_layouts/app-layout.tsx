@@ -13,9 +13,7 @@ export default function AppLayout() {
 
   return (
     <div className="flex h-screen flex-col">
-      <div className="px-2">
-        <HeaderMobile />
-      </div>
+      <HeaderMobile />
       <div className="flex h-full">
         sidebar
         <div className="flex h-full w-full flex-col px-2 lg:ml-48">
