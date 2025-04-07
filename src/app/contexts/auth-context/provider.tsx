@@ -2,7 +2,11 @@ import React, { JSX, useLayoutEffect, useState } from 'react'
 
 import { httpClient } from '@/app/configs/http-client'
 import { STORAGE_KEYS } from '@/app/constants/storage-keys'
-import { useAuthenticated, useRefreshTokens } from '@/app/hooks/auth-hooks'
+import {
+  useAuthenticated,
+  useRefreshTokens,
+  useSignOut,
+} from '@/app/hooks/auth-hooks'
 import type { IAuthenticatedProps } from '@/app/services/auth-services/interfaces'
 
 import { AuthContext, IAuthContextValue } from './context'
@@ -19,6 +23,7 @@ export default function AuthProvider({
   })
   const { refreshTokensFn } = useRefreshTokens()
   const { authenticatedFn } = useAuthenticated()
+  const { signOutFn, isPending: signOutPending } = useSignOut()
 
   useLayoutEffect(() => {
     const interceptorId = httpClient.interceptors.request.use((config) => {
@@ -84,9 +89,18 @@ export default function AuthProvider({
     setSignedIn(true)
   }
 
+  async function handleSignOut() {
+    await signOutFn()
+    localStorage.removeItem(STORAGE_KEYS.ACCESS_TOKEN)
+    localStorage.removeItem(STORAGE_KEYS.REFRESH_TOKEN)
+    setSignedIn(false)
+  }
+
   const value: IAuthContextValue = {
     signedIn,
     handleAuthenticated,
+    handleSignOut,
+    signOutPending,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

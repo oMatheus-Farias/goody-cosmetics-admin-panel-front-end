@@ -8,6 +8,8 @@ export interface IAuthContextValue {
     email,
     password,
   }: IAuthenticatedProps) => Promise<void>
+  handleSignOut: () => Promise<void>
+  signOutPending: boolean
 }
 
 export const AuthContext = createContext({} as IAuthContextValue)
