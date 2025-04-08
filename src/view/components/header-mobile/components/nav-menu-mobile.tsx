@@ -4,7 +4,9 @@ import { useState } from 'react'
 import { NAVIGATION_LINKS } from '@/app/constants/navigation-links'
 import { useAuth } from '@/app/hooks/auth-hooks'
 
+import LogoutButton from '../../log-out-button'
 import NavLink from '../../nav-link'
+import SettingsButton from '../../settings-button'
 import { Button } from '../../ui/button'
 import { Separator } from '../../ui/separator'
 import {
@@ -17,8 +19,6 @@ import {
   SheetTrigger,
 } from '../../ui/sheet'
 import UpdatePasswordModal from '../../update-password-modal'
-import LogoutButton from './logout-button'
-import SettingsButton from './settings-button'
 
 export default function NavMenuMobile() {
   const [dropdownMenuOpen, setDropdownMenuOpen] = useState(false)
