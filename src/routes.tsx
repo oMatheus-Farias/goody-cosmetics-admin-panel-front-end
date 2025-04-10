@@ -16,7 +16,7 @@ const ForgotPasswordPage = lazy(
 )
 const ResetPasswordPage = lazy(() => import('./view/pages/auth/reset-password'))
 
-const CategoriesPage = lazy(() => import('./view/pages/admin/registrations'))
+const CategoriesPage = lazy(() => import('./view/pages/admin/categories'))
 const ProductsPage = lazy(() => import('./view/pages/admin/products'))
 
 export default function AppRoutes() {
