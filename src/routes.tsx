@@ -3,6 +3,10 @@ import { Route, Routes } from 'react-router-dom'
 
 import { ROUTES_PATHS } from './app/constants/routes-paths'
 
+const GlobalSuspense = lazy(
+  () => import('./view/components/suspenses/global-suspense'),
+)
+
 const AppLayout = lazy(() => import('./view/pages/_layouts/app-layout'))
 const AuthLayout = lazy(() => import('./view/pages/_layouts/auth-layout'))
 
@@ -17,7 +21,7 @@ const ProductsPage = lazy(() => import('./view/pages/admin/products'))
 
 export default function AppRoutes() {
   return (
-    <Suspense fallback={'carregando...'}>
+    <Suspense fallback={<GlobalSuspense />}>
       <Routes>
         <Route element={<AuthLayout />}>
           <Route path={ROUTES_PATHS.LOGIN} element={<LoginPage />} />
