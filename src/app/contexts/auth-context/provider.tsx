@@ -7,6 +7,7 @@ import {
   useRefreshTokens,
   useSignOut,
 } from '@/app/hooks/auth-hooks'
+import { useMe } from '@/app/hooks/users-hooks'
 import type { IAuthenticatedProps } from '@/app/services/auth-services/interfaces'
 
 import { AuthContext, IAuthContextValue } from './context'
@@ -24,6 +25,7 @@ export default function AuthProvider({
   const { refreshTokensFn } = useRefreshTokens()
   const { authenticatedFn } = useAuthenticated()
   const { signOutFn, isPending: signOutPending } = useSignOut()
+  const { me, isLoading: meIsLoading } = useMe()
 
   useLayoutEffect(() => {
     const interceptorId = httpClient.interceptors.request.use((config) => {
@@ -101,6 +103,8 @@ export default function AuthProvider({
     handleAuthenticated,
     handleSignOut,
     signOutPending,
+    me,
+    meIsLoading,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
