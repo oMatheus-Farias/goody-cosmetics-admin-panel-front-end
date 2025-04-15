@@ -17,7 +17,7 @@ type TProps = {
   categoryId: string
 }
 
-export default function ActionsOptionsDropdownMenu({ categoryId }: TProps) {
+export function ActionsOptionsDropdownMenu({ categoryId }: TProps) {
   const [open, setOpen] = useState(false)
 
   return (

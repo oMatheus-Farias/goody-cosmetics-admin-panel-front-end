@@ -11,9 +11,9 @@ import {
 } from '@/view/components/ui/table'
 
 import type { ICategoriesTableProps } from '../interfaces'
-import ActionsOptionsDropdownMenu from './actions-options-dropdown-menu'
+import { ActionsOptionsDropdownMenu } from './actions-options-dropdown-menu'
 
-export default function CategoriesTable({
+export function CategoriesTable({
   categories,
   setSearchParams,
 }: ICategoriesTableProps) {
