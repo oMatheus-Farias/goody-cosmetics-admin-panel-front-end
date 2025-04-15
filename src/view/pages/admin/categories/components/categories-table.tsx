@@ -50,7 +50,7 @@ export default function CategoriesTable({
                 {dayjs(category?.createdAt).format('DD/MM/YYYY')}
               </TableCell>
               <TableCell className="text-right">
-                <ActionsOptionsDropdownMenu />
+                <ActionsOptionsDropdownMenu categoryId={category?.id} />
               </TableCell>
             </TableRow>
           ))}

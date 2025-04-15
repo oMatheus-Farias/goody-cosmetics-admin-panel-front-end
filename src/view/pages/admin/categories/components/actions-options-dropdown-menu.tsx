@@ -13,7 +13,11 @@ import {
 
 import { DeleteAlertDialog } from './delete-alert-dialog'
 
-export default function ActionsOptionsDropdownMenu() {
+type TProps = {
+  categoryId: string
+}
+
+export default function ActionsOptionsDropdownMenu({ categoryId }: TProps) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -52,7 +56,7 @@ export default function ActionsOptionsDropdownMenu() {
             onSelect={(e) => e.preventDefault()}
             className="p-0"
           >
-            <DeleteAlertDialog onOpenChange={setOpen} />
+            <DeleteAlertDialog onOpenChange={setOpen} categoryId={categoryId} />
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
