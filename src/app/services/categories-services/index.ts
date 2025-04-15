@@ -15,4 +15,7 @@ export class CategoriesServices {
     )
     return data
   }
+  static async deleteCategories(categoryId: string) {
+    await httpClient.delete(`/api/categories/${categoryId}`)
+  }
 }
