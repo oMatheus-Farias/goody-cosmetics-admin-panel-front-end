@@ -15,6 +15,11 @@ export class CategoriesServices {
     )
     return data
   }
+  static async createCategories(name: string) {
+    await httpClient.post('/api/categories', {
+      name,
+    })
+  }
   static async deleteCategories(categoryId: string) {
     await httpClient.delete(`/api/categories/${categoryId}`)
   }
