@@ -32,7 +32,7 @@ export function CreateCategoriesModal({ open, onOpenChange }: Props) {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-1 text-gray-700">
+          <DialogTitle className="flex items-center justify-center gap-1 text-gray-700 sm:justify-start">
             <Plus className="w-4" />
             Cadastrar categoria
           </DialogTitle>
