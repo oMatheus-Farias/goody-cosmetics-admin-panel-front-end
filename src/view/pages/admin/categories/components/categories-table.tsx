@@ -11,6 +11,7 @@ import {
 } from '@/view/components/ui/table'
 
 import type { ICategoriesTableProps } from '../interfaces'
+import ActionsOptionsDropdownMenu from './actions-options-dropdown-menu'
 
 export default function CategoriesTable({
   categories,
@@ -48,7 +49,9 @@ export default function CategoriesTable({
               <TableCell>
                 {dayjs(category?.createdAt).format('DD/MM/YYYY')}
               </TableCell>
-              <TableCell className="text-right">edit</TableCell>
+              <TableCell className="text-right">
+                <ActionsOptionsDropdownMenu />
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
