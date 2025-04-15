@@ -1,4 +1,3 @@
-import { Plus } from 'lucide-react'
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { z } from 'zod'
@@ -6,14 +5,14 @@ import { z } from 'zod'
 import { useGetAllCategoriesWithParams } from '@/app/hooks/categories-hooks'
 import MainContainer from '@/view/components/main-container'
 import MainContentHeader from '@/view/components/main-content-header'
-import { Button } from '@/view/components/ui/button'
 
-import CategoriesTable from './components/categories-table'
+import { CategoriesTable, CreateCategoriesModal } from './components'
 
 export default function CategoriesPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const [searchTerm, setSearchTerm] = useState('')
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm)
+  const [modalOpen, setModalOpen] = useState(false)
 
   // TODO: Fix this to use a debounce function
   console.log({
@@ -37,14 +36,7 @@ export default function CategoriesPage() {
         title="Cadastre suas categorias"
         description="Gerencie e organize suas categorias com facilidade!"
       >
-        <Button
-          type="button"
-          aria-label="Cadastrar"
-          className="bg-goodycosmetics-primary-400 hover:bg-goodycosmetics-primary-500 flex items-center gap-1 transition-colors duration-150 ease-linear hover:cursor-pointer"
-        >
-          <Plus />
-          Cadastrar
-        </Button>
+        <CreateCategoriesModal open={modalOpen} onOpenChange={setModalOpen} />
       </MainContentHeader>
 
       <div className="mt-8">

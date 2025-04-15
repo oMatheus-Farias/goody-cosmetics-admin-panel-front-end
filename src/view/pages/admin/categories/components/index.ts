@@ -1,3 +1,5 @@
 export * from './actions-options-dropdown-menu'
 export * from './categories-table'
+export * from './create-categories-form'
+export * from './create-categories-modal'
 export * from './delete-alert-dialog'
