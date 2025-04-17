@@ -24,11 +24,14 @@ export default function SidebarMenu() {
           </NavLink>
         ))}
       </nav>
-      <Link to={env.VITE_CATALOG_URL} className="w-full px-2">
+      <Link
+        to={env.VITE_CATALOG_URL}
+        className="mx-auto max-w-40 min-w-40 overflow-hidden rounded-2xl"
+      >
         <img
           src={catalogThumbnail}
           alt="Catálogo"
-          className="rounded-2xl bg-cover bg-center"
+          className="bg-cover bg-center transition-all duration-200 ease-linear hover:scale-[1.03]"
         />
       </Link>
     </aside>
