@@ -3,6 +3,7 @@ import { httpClient } from '@/app/configs/http-client'
 import type {
   IGetAllWithParamsProps,
   IGetAllWithParamsReturn,
+  IUpdateProps,
 } from './interfaces'
 
 export class CategoriesServices {
@@ -17,6 +18,11 @@ export class CategoriesServices {
   }
   static async createCategories(name: string) {
     await httpClient.post('/api/categories', {
+      name,
+    })
+  }
+  static async updateCategories({ categoryId, name }: IUpdateProps) {
+    await httpClient.put(`/api/categories/${categoryId}`, {
       name,
     })
   }
