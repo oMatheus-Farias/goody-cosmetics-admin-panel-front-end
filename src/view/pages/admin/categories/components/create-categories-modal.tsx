@@ -24,7 +24,7 @@ export function CreateCategoriesModal({ open, onOpenChange }: Props) {
         <Button
           type="button"
           aria-label="Cadastrar"
-          className="bg-goodycosmetics-primary-400 hover:bg-goodycosmetics-primary-500 flex items-center gap-1 transition-colors duration-150 ease-linear hover:cursor-pointer"
+          className="bg-goodycosmetics-primary-400 hover:bg-goodycosmetics-primary-500 flex w-full items-center gap-1 transition-colors duration-150 ease-linear hover:cursor-pointer md:w-28"
         >
           <Plus />
           Cadastrar

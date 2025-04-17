@@ -10,7 +10,7 @@ export default function MainContentHeader({
   children,
 }: TProps) {
   return (
-    <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center sm:gap-0">
+    <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center md:gap-0">
       <div className="flex flex-col">
         <h2 className="text-xl text-gray-600">{title}</h2>
         <p className="text-sm font-light text-gray-400">{description}</p>

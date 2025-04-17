@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { z } from 'zod'
 
 import { useGetAllCategoriesWithParams } from '@/app/hooks/categories-hooks'
 import MainContainer from '@/view/components/main-container'
 import MainContentHeader from '@/view/components/main-content-header'
+import { SearchInput } from '@/view/components/search-input'
 
 import { CategoriesTable, CreateCategoriesModal } from './components'
 
@@ -13,12 +14,6 @@ export default function CategoriesPage() {
   const [searchTerm, setSearchTerm] = useState('')
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm)
   const [modalOpen, setModalOpen] = useState(false)
-
-  // TODO: Fix this to use a debounce function
-  console.log({
-    setSearchTerm,
-    setDebouncedSearchTerm,
-  })
 
   const pageIndex = z.coerce
     .number()
@@ -30,13 +25,28 @@ export default function CategoriesPage() {
     searchTerm: debouncedSearchTerm,
   })
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm)
+    }, 400)
+
+    return () => clearTimeout(timeout)
+  }, [searchTerm])
+
   return (
     <MainContainer>
       <MainContentHeader
         title="Cadastre suas categorias"
         description="Gerencie e organize suas categorias com facilidade!"
       >
-        <CreateCategoriesModal open={modalOpen} onOpenChange={setModalOpen} />
+        <div className="flex w-full flex-col-reverse items-center gap-5 md:w-80 md:flex-row md:gap-2">
+          <SearchInput
+            placeholder="Buscar categoria"
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+          />
+          <CreateCategoriesModal open={modalOpen} onOpenChange={setModalOpen} />
+        </div>
       </MainContentHeader>
 
       <div className="mt-8">
