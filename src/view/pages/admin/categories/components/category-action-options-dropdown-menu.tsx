@@ -12,13 +12,13 @@ import {
   DropdownMenuTrigger,
 } from '@/view/components/ui/dropdown-menu'
 
-import { DeleteAlertDialog, UpdateCategoriesModal } from './'
+import { DeleteAlertDialog, UpdateCategoriesModal } from '.'
 
 type TProps = {
   category: IGetCategoriesReturn
 }
 
-export function ActionsOptionsDropdownMenu({ category }: TProps) {
+export function CategoryActionOptionsDropdownMenu({ category }: TProps) {
   const [open, setOpen] = useState(false)
   const [openModal, setOpenModal] = useState(false)
 
