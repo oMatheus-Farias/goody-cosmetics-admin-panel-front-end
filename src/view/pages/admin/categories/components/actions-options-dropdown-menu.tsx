@@ -1,6 +1,7 @@
 import { EllipsisVertical, Pencil } from 'lucide-react'
 import { useState } from 'react'
 
+import type { IGetCategoriesReturn } from '@/app/services/categories-services/interfaces'
 import { Button } from '@/view/components/ui/button'
 import {
   DropdownMenu,
@@ -11,14 +12,15 @@ import {
   DropdownMenuTrigger,
 } from '@/view/components/ui/dropdown-menu'
 
-import { DeleteAlertDialog } from './delete-alert-dialog'
+import { DeleteAlertDialog, UpdateCategoriesModal } from './'
 
 type TProps = {
-  categoryId: string
+  category: IGetCategoriesReturn
 }
 
-export function ActionsOptionsDropdownMenu({ categoryId }: TProps) {
+export function ActionsOptionsDropdownMenu({ category }: TProps) {
   const [open, setOpen] = useState(false)
+  const [openModal, setOpenModal] = useState(false)
 
   return (
     <>
@@ -46,6 +48,7 @@ export function ActionsOptionsDropdownMenu({ categoryId }: TProps) {
               variant="ghost"
               size="icon"
               aria-label="Excluir"
+              onClick={() => setOpenModal(true)}
               className="flex w-full justify-start px-2 hover:cursor-pointer"
             >
               <Pencil aria-label="Editar" />
@@ -56,10 +59,18 @@ export function ActionsOptionsDropdownMenu({ categoryId }: TProps) {
             onSelect={(e) => e.preventDefault()}
             className="p-0"
           >
-            <DeleteAlertDialog onOpenChange={setOpen} categoryId={categoryId} />
+            <DeleteAlertDialog
+              onOpenChange={setOpen}
+              categoryId={category.id}
+            />
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
+      <UpdateCategoriesModal
+        open={openModal}
+        onOpenChange={setOpenModal}
+        category={category}
+      />
     </>
   )
 }
