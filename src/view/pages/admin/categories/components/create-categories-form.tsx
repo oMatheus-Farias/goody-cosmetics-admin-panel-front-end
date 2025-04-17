@@ -93,7 +93,7 @@ export function CreateCategoriesForm({ onOpenChange }: TProps) {
         <div className="mt-14 w-full">
           <Button
             type="submit"
-            aria-label="Redefinir senha"
+            aria-label="Cadastrar categoria"
             disabled={isPending}
             className="bg-goodycosmetics-primary-700 hover:bg-goodycosmetics-primary-800 h-12 w-full rounded-[10px] font-light uppercase transition-all duration-150 ease-linear hover:cursor-pointer"
           >
