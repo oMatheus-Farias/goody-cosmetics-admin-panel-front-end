@@ -9,7 +9,7 @@ export const createCategoriesSchema = z.object({
     .min(1, {
       message: 'Campo obrigatório',
     })
-    .max(50, {
-      message: 'Máximo de 50 caracteres',
+    .max(25, {
+      message: 'Máximo de 25 caracteres',
     }),
 })
