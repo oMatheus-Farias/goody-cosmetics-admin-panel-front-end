@@ -31,7 +31,7 @@ export default function SidebarMenu() {
         <img
           src={catalogThumbnail}
           alt="Catálogo"
-          className="bg-cover bg-center transition-all duration-200 ease-linear hover:scale-[1.03]"
+          className="rounded-2xl bg-cover bg-center transition-all duration-200 ease-linear hover:scale-[0.96]"
         />
       </Link>
     </aside>
