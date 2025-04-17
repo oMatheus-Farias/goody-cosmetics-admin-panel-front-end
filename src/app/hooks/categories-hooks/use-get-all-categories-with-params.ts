@@ -11,6 +11,7 @@ export function useGetAllCategoriesWithParams({
     queryKey: ['categories', pageIndex, searchTerm],
     queryFn: () =>
       CategoriesServices.getAllCategoriesWithParams({ pageIndex, searchTerm }),
+    staleTime: 1000 * 60 * 60,
   })
   return { categories, isLoading }
 }
