@@ -1,3 +1,5 @@
+import { useQueryClient } from '@tanstack/react-query'
+import { useEffect } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 
 import { ROUTES_PATHS } from '@/app/constants/routes-paths'
@@ -8,7 +10,14 @@ import HeaderMobile from '@/view/components/header-mobile'
 import SidebarMenu from '@/view/components/sidebar-menu'
 
 export default function AppLayout() {
-  const { signedIn } = useAuth()
+  const queryClient = useQueryClient()
+  const { signedIn, me } = useAuth()
+
+  useEffect(() => {
+    if (signedIn && !me) {
+      queryClient.invalidateQueries({ queryKey: ['me'] })
+    }
+  }, [me, queryClient, signedIn])
 
   if (!signedIn) {
     return <Navigate to={ROUTES_PATHS.LOGIN} replace={true} />
