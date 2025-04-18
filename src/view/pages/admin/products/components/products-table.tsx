@@ -12,6 +12,7 @@ import {
 } from '@/view/components/ui/table'
 
 import type { IProductsTableProps } from '../interfaces/products-table-props'
+import { ProductActionOptionsDropdownMenu } from './product-action-options-dropdown-menu'
 
 export function ProductsTable({
   products,
@@ -28,22 +29,22 @@ export function ProductsTable({
       <Table>
         <TableHeader>
           <TableRow className="text-sm">
-            <TableHead className="w-[600px] font-light text-gray-400">
+            <TableHead className="w-60 font-light text-gray-400">
               Nome
             </TableHead>
-            <TableHead className="w-96 font-light text-gray-400">
+            <TableHead className="w-40 font-light text-gray-400">
               Preço antigo
             </TableHead>
-            <TableHead className="w-96 font-light text-gray-400">
+            <TableHead className="w-40 font-light text-gray-400">
               Preço atual
             </TableHead>
-            <TableHead className="w-96 font-light text-gray-400">
+            <TableHead className="w-72 font-light text-gray-400">
               Descrição
             </TableHead>
-            <TableHead className="w-96 font-light text-gray-400">
+            <TableHead className="w-60 font-light text-gray-400">
               Estoque
             </TableHead>
-            <TableHead className="w-96 font-light text-gray-400">
+            <TableHead className="w-60 font-light text-gray-400">
               Data
             </TableHead>
             <TableHead className="text-right font-light text-gray-400">
@@ -62,13 +63,15 @@ export function ProductsTable({
                 {formatCurrency(product?.oldPrice)}
               </TableCell>
               <TableCell>{formatCurrency(product?.currentPrice)}</TableCell>
-              <TableCell>{product?.description}</TableCell>
+              <TableCell className="max-w-60 overflow-hidden text-ellipsis">
+                {product?.description}
+              </TableCell>
               <TableCell>{product?.stockQuantity}</TableCell>
               <TableCell>
                 {dayjs(product?.createdAt).format('DD/MM/YYYY')}
               </TableCell>
               <TableCell className="text-right">
-                {/* <ActionsOptionsDropdownMenu product={product} /> */}
+                <ProductActionOptionsDropdownMenu product={product} />
               </TableCell>
             </TableRow>
           ))}
