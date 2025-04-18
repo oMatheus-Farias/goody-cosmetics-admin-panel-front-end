@@ -55,7 +55,7 @@ export async function handleUpdateCategories({
       return toast.error(error.message)
     }
     toast.error(
-      'Ocorreu um erro ao criar a categoria. Tente novamente mais tarde.',
+      'Ocorreu um erro ao editar a categoria. Tente novamente mais tarde.',
     )
   }
 }
