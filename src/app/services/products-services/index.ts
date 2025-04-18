@@ -15,4 +15,7 @@ export class ProductsServices {
     )
     return data
   }
+  static async deleteProducts(productId: string) {
+    await httpClient.delete(`/api/products/${productId}`)
+  }
 }
