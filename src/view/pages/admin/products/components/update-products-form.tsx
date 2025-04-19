@@ -161,7 +161,6 @@ export function UpdateProductsForm({ product, onOpenChange }: TProps) {
                     <Input
                       id="name"
                       type="text"
-                      autoFocus
                       spellCheck="false"
                       autoComplete="off"
                       aria-label="Nome do produto"
