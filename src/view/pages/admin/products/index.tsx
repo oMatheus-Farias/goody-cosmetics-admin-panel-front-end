@@ -3,8 +3,10 @@ import { useSearchParams } from 'react-router-dom'
 import { z } from 'zod'
 
 import { useGetAllProductsWithParams } from '@/app/hooks/products-hooks'
+import { LoadingTable } from '@/view/components/loading-table'
 import MainContainer from '@/view/components/main-container'
 import MainContentHeader from '@/view/components/main-content-header'
+import { NoInformationInTable } from '@/view/components/no-information-in-table'
 import { SearchInput } from '@/view/components/search-input'
 
 import { CreateProductsModal, ProductsTable } from './components'
@@ -51,7 +53,7 @@ export default function ProductsPage() {
 
       <div className="mt-8">
         {isLoading ? (
-          <div>carregando...</div>
+          <LoadingTable />
         ) : (
           <>
             {products && products?.products?.length > 0 ? (
@@ -60,7 +62,10 @@ export default function ProductsPage() {
                 setSearchParams={setSearchParams}
               />
             ) : (
-              <p>Nenhuma informação encontrada.</p>
+              <NoInformationInTable
+                title="Nenhum produto encontrado"
+                description='Se ainda não tem produtos cadastrados, clique no botão "Cadastrar".'
+              />
             )}
           </>
         )}

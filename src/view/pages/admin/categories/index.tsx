@@ -3,8 +3,10 @@ import { useSearchParams } from 'react-router-dom'
 import { z } from 'zod'
 
 import { useGetAllCategoriesWithParams } from '@/app/hooks/categories-hooks'
+import { LoadingTable } from '@/view/components/loading-table'
 import MainContainer from '@/view/components/main-container'
 import MainContentHeader from '@/view/components/main-content-header'
+import { NoInformationInTable } from '@/view/components/no-information-in-table'
 import { SearchInput } from '@/view/components/search-input'
 
 import { CategoriesTable, CreateCategoriesModal } from './components'
@@ -51,7 +53,7 @@ export default function CategoriesPage() {
 
       <div className="mt-8">
         {isLoading ? (
-          <div>carregando...</div>
+          <LoadingTable />
         ) : (
           <>
             {categories && categories.categories.length > 0 ? (
@@ -60,7 +62,10 @@ export default function CategoriesPage() {
                 setSearchParams={setSearchParams}
               />
             ) : (
-              <p>Nenhuma informação encontrada.</p>
+              <NoInformationInTable
+                title="Nenhuma categoria encontrada"
+                description='Se ainda não tem categorias cadastradas, clique no botão "Cadastrar".'
+              />
             )}
           </>
         )}
