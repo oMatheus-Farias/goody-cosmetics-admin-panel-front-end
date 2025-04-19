@@ -9,7 +9,7 @@ export default function AuthLayout() {
   const { signedIn } = useAuth()
 
   if (signedIn) {
-    return <Navigate to={ROUTES_PATHS.CATEGORIES} replace={true} />
+    return <Navigate to={ROUTES_PATHS.SALES} replace={true} />
   }
 
   return (
