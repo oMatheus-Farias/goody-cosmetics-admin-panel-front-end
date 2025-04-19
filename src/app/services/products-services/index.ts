@@ -16,6 +16,13 @@ export class ProductsServices {
     )
     return data
   }
+  static async createProducts(data: FormData) {
+    await httpClient.post('/api/products', data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+  }
   static async updateProducts({ productId, data }: IUpdateProps) {
     await httpClient.put(`/api/products/${productId}`, data)
   }
