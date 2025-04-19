@@ -1,4 +1,5 @@
 export * from './get-all-with-params-props'
 export * from './get-all-with-params-return'
 export * from './get-products-return'
+export * from './update-product-image-props'
 export * from './update-props'
