@@ -5,6 +5,7 @@ import { Controller, useForm } from 'react-hook-form'
 import { NumericFormat } from 'react-number-format'
 import { z } from 'zod'
 
+import { useGetAllCategories } from '@/app/hooks/categories-hooks'
 import { useUpdateProducts } from '@/app/hooks/products-hooks/use-update-products'
 import { updateProductsSchema } from '@/app/schemas/products-schemas/update-products-schema'
 import type { IGetProductsReturn } from '@/app/services/products-services/interfaces'
@@ -18,6 +19,15 @@ import {
 } from '@/view/components/ui/form'
 import { Input } from '@/view/components/ui/input'
 import { Label } from '@/view/components/ui/label'
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from '@/view/components/ui/select'
 
 import { handleUpdateProducts } from '../functions/handle-update-products'
 
@@ -30,6 +40,7 @@ export type TUpdateProductsForm = z.infer<typeof updateProductsSchema>
 
 export function UpdateProductsForm({ product, onOpenChange }: TProps) {
   const queryClient = useQueryClient()
+  const { categories, isLoading } = useGetAllCategories()
   const { updateProductsFn } = useUpdateProducts()
 
   const form = useForm<TUpdateProductsForm>({
@@ -60,6 +71,77 @@ export function UpdateProductsForm({ product, onOpenChange }: TProps) {
         )}
         className="mt-7 flex w-full flex-col gap-5"
       >
+        <Controller
+          name="categoryId"
+          control={form.control}
+          render={({ field: { name, onChange, value } }) => (
+            <div className="flex flex-col gap-2">
+              <Label
+                htmlFor="categoryId"
+                className="text-goodycosmetics-primary-700 text-xs font-normal uppercase"
+              >
+                Categoria
+              </Label>
+              <div
+                className={`${form.formState.errors.categoryId ? 'border-rose-500 has-focus-visible:ring-rose-300/80' : 'border-goodycosmetics-primary-400 has-focus:ring-goodycosmetics-primary-200'} flex h-12 w-full items-center rounded-[10px] border bg-white font-light has-focus:ring-[3px]`}
+              >
+                <Select name={name} onValueChange={onChange} value={value}>
+                  <SelectTrigger className="w-full border-none shadow-none placeholder:text-gray-400 focus-visible:border-none focus-visible:ring-0">
+                    <SelectValue
+                      defaultValue={''}
+                      placeholder="Selecione uma categoria"
+                    />
+                  </SelectTrigger>
+                  <SelectContent className="w-full bg-white">
+                    <SelectGroup>
+                      <SelectLabel className="uppercase">
+                        Categorias
+                      </SelectLabel>
+                      {isLoading ? (
+                        <SelectItem
+                          value="loading"
+                          disabled
+                          className="font-light"
+                        >
+                          <LoaderCircleIcon className="animate-spin" />
+                          Carregando...
+                        </SelectItem>
+                      ) : categories && categories.length > 0 ? (
+                        <>
+                          {categories?.map((category) => (
+                            <SelectItem
+                              className="hover:bg-goodycosmetics-secondary-500 font-light text-gray-500 transition-all duration-200 ease-linear hover:cursor-pointer"
+                              key={category.id}
+                              value={category.id}
+                            >
+                              {category.name}
+                            </SelectItem>
+                          ))}
+                        </>
+                      ) : (
+                        <SelectItem
+                          value="no-categories"
+                          disabled
+                          className="font-light"
+                        >
+                          Nenhuma categoria encontrada.
+                        </SelectItem>
+                      )}
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </div>
+              {form.formState.errors.categoryId && (
+                <div className="flex items-center gap-2 font-light text-red-500">
+                  <AlertCircle className="max-h-2.5 min-h-2.5 max-w-2.5 min-w-2.5" />
+                  <FormMessage className="text-xs">
+                    {form.formState.errors.categoryId.message}
+                  </FormMessage>
+                </div>
+              )}
+            </div>
+          )}
+        />
         <FormField
           name="name"
           control={form.control}
