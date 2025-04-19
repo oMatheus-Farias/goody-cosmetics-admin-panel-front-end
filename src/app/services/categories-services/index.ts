@@ -3,10 +3,18 @@ import { httpClient } from '@/app/configs/http-client'
 import type {
   IGetAllWithParamsProps,
   IGetAllWithParamsReturn,
+  IGetCategoriesReturn,
   IUpdateProps,
 } from './interfaces'
 
 export class CategoriesServices {
+  static async getAllCategories() {
+    const { data } =
+      await httpClient.get<Omit<IGetCategoriesReturn, 'createdAt'>[]>(
+        '/api/categories',
+      )
+    return data
+  }
   static async getAllCategoriesWithParams({
     pageIndex,
     searchTerm,
