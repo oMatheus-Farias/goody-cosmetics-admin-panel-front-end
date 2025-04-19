@@ -1,3 +1,5 @@
+export * from './create-products-form'
+export * from './create-products-modal'
 export * from './delete-alert-dialog'
 export * from './product-action-options-dropdown-menu'
 export * from './products-table'

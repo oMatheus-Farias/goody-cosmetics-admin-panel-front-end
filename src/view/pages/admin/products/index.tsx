@@ -7,8 +7,7 @@ import MainContainer from '@/view/components/main-container'
 import MainContentHeader from '@/view/components/main-content-header'
 import { SearchInput } from '@/view/components/search-input'
 
-import { CreateCategoriesModal } from '../categories/components'
-import { ProductsTable } from './components/products-table'
+import { CreateProductsModal, ProductsTable } from './components'
 
 export default function ProductsPage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -46,7 +45,7 @@ export default function ProductsPage() {
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
           />
-          <CreateCategoriesModal open={modalOpen} onOpenChange={setModalOpen} />
+          <CreateProductsModal open={modalOpen} onOpenChange={setModalOpen} />
         </div>
       </MainContentHeader>
 
