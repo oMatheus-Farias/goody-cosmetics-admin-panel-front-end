@@ -41,32 +41,28 @@ export function SalesTable({ sales, setSearchParams }: ISalesTableProps) {
         </TableHeader>
         <TableBody className="text-base font-normal text-gray-500">
           {sales.sales.map((sale) => (
-            <>
-              <TableRow
-                className="transition-all duration-150 ease-linear hover:bg-gray-100"
-                key={sale.id}
-              >
-                <TableCell>
-                  {dayjs(sale.saleDate).format('DD/MM/YYYY')}
-                </TableCell>
-                <TableCell>{formatCurrency(sale.totalPrice)}</TableCell>
-                <TableCell>
-                  <ul className="space-y-1">
-                    {sale.items.map((item) => (
-                      <li
-                        key={item.saleItemId}
-                        className="flex items-center gap-5"
-                      >
-                        <span>{item.productName}</span>
-                        <span>{item.quantity}x</span>
-                        <span>{formatCurrency(item.unitPrice)}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </TableCell>
-                <TableCell className="text-right">ProductActions</TableCell>
-              </TableRow>
-            </>
+            <TableRow
+              className="transition-all duration-150 ease-linear hover:bg-gray-100"
+              key={sale.id}
+            >
+              <TableCell>{dayjs(sale.saleDate).format('DD/MM/YYYY')}</TableCell>
+              <TableCell>{formatCurrency(sale.totalPrice)}</TableCell>
+              <TableCell>
+                <ul className="space-y-1">
+                  {sale.items.map((item) => (
+                    <li
+                      key={item.saleItemId}
+                      className="flex items-center gap-5"
+                    >
+                      <span>{item.productName}</span>
+                      <span>{item.quantity}x</span>
+                      <span>{formatCurrency(item.unitPrice)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </TableCell>
+              <TableCell className="text-right">ProductActions</TableCell>
+            </TableRow>
           ))}
         </TableBody>
       </Table>
