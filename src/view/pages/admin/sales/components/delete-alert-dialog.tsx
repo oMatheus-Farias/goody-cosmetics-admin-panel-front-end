@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { toast } from 'sonner'
 
 import { env } from '@/app/configs/env-config'
-import { useDeleteSales } from '@/app/hooks/sales'
+import { useDeleteSales } from '@/app/hooks/sales-hooks'
 import {
   AlertDialog,
   AlertDialogAction,

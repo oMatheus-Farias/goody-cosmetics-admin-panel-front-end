@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { z } from 'zod'
 
-import { useGetAllSalesWithParams } from '@/app/hooks/sales'
+import { useGetAllSalesWithParams } from '@/app/hooks/sales-hooks'
 import { LoadingTable } from '@/view/components/loading-table'
 import MainContainer from '@/view/components/main-container'
 import MainContentHeader from '@/view/components/main-content-header'
