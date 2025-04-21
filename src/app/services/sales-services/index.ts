@@ -3,6 +3,7 @@ import { httpClient } from '@/app/configs/http-client'
 import type {
   IGetAllWithParamsProps,
   IGetAllWithParamsReturn,
+  IUpdateSalesProps,
 } from './interfaces'
 
 export class SalesServices {
@@ -14,6 +15,12 @@ export class SalesServices {
       `/api/sales/params?pageIndex=${pageIndex}&searchTerm=${searchTerm}`,
     )
     return data
+  }
+  static async updateSales(data: IUpdateSalesProps) {
+    await httpClient.patch(`/api/sales/${data.saleId}`, {
+      saleDate: data.saleDate,
+      items: data.items,
+    })
   }
   static async deleteSales(saleId: string) {
     await httpClient.delete(`/api/sales/${saleId}`)
