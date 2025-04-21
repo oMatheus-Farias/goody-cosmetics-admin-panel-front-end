@@ -25,4 +25,7 @@ export class SalesServices {
   static async deleteSales(saleId: string) {
     await httpClient.delete(`/api/sales/${saleId}`)
   }
+  static async deleteSaleItems(saleItemId: string) {
+    await httpClient.delete(`/api/sales/items/${saleItemId}`)
+  }
 }
