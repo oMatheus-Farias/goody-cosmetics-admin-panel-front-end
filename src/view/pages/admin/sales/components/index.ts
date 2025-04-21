@@ -1,4 +1,6 @@
+export * from './badge-product-name'
 export * from './delete-alert-dialog'
+export * from './delete-sale-items-alert-dialog'
 export * from './sale-action-options-dropdown-menu'
 export * from './sales-table'
 export * from './update-sales-form'

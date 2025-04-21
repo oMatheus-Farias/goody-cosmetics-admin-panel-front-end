@@ -2,12 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useQueryClient } from '@tanstack/react-query'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale/pt-BR'
-import {
-  AlertCircle,
-  CalendarIcon,
-  LoaderCircleIcon,
-  ShoppingBasket,
-} from 'lucide-react'
+import { AlertCircle, CalendarIcon, LoaderCircleIcon } from 'lucide-react'
 import { useRef, useState } from 'react'
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
 import { NumericFormat } from 'react-number-format'
@@ -30,6 +25,7 @@ import { Input } from '@/view/components/ui/input'
 import { Label } from '@/view/components/ui/label'
 
 import { handleUpdateSales } from '../functions'
+import { BadgeProductName, DeleteSaleItemsAlertDialog } from '.'
 
 export type TUpdateSalesForm = z.infer<typeof updateSalesSchema>
 
@@ -158,9 +154,13 @@ export function UpdateSalesForm({ sale, onOpenChange }: IUpdateSalesFormProps) {
           </Label>
           {fields.map((field, index) => (
             <div key={field.id} className="flex flex-col gap-4">
-              <div className="flex w-fit items-center gap-1 rounded-full border border-gray-300 px-3 py-0.5 text-xs font-medium text-gray-500 uppercase">
-                <ShoppingBasket className="w-3.5" />
-                {sale.items[index].productName}
+              <div className="flex items-center gap-4">
+                <BadgeProductName
+                  productName={sale.items[index]?.productName}
+                />
+                <DeleteSaleItemsAlertDialog
+                  saleItemId={sale.items[index]?.saleItemId}
+                />
               </div>
 
               <FormField
