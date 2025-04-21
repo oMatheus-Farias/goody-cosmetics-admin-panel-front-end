@@ -12,6 +12,7 @@ import {
 } from '@/view/components/ui/table'
 
 import type { ISalesTableProps } from '../interfaces/sales-table-props'
+import { SaleActionOptionsDropdownMenu } from './sale-action-options-dropdown-menu'
 
 export function SalesTable({ sales, setSearchParams }: ISalesTableProps) {
   function handlePaginate(pageIndex: number) {
@@ -61,7 +62,9 @@ export function SalesTable({ sales, setSearchParams }: ISalesTableProps) {
                   ))}
                 </ul>
               </TableCell>
-              <TableCell className="text-right">ProductActions</TableCell>
+              <TableCell className="text-right">
+                <SaleActionOptionsDropdownMenu sale={sale} />
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
