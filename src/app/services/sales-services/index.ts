@@ -15,4 +15,7 @@ export class SalesServices {
     )
     return data
   }
+  static async deleteSales(saleId: string) {
+    await httpClient.delete(`/api/sales/${saleId}`)
+  }
 }
