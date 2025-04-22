@@ -1,6 +1,7 @@
 import { useQueryClient } from '@tanstack/react-query'
 import { LoaderCircle, Trash2 } from 'lucide-react'
 import { useState } from 'react'
+import type { UseFieldArrayRemove } from 'react-hook-form'
 import { toast } from 'sonner'
 
 import { env } from '@/app/configs/env-config'
@@ -17,11 +18,19 @@ import {
   AlertDialogTrigger,
 } from '@/view/components/ui/alert-dialog'
 
+import type { IFieldSalesProps } from '../interfaces'
+
 type TProps = {
   saleItemId: string
+  fields: IFieldSalesProps
+  remove: UseFieldArrayRemove
 }
 
-export function DeleteSaleItemsAlertDialog({ saleItemId }: TProps) {
+export function DeleteSaleItemsAlertDialog({
+  saleItemId,
+  fields,
+  remove,
+}: TProps) {
   const queryClient = useQueryClient()
   const [openAlertDialog, setOpenAlertDialog] = useState(false)
   const { deleteSaleItemsFn, isPending } = useDeleteSaleItems()
@@ -29,6 +38,12 @@ export function DeleteSaleItemsAlertDialog({ saleItemId }: TProps) {
   async function handleDelete(saleItemId: string) {
     try {
       await deleteSaleItemsFn(saleItemId)
+      const indexToRemove = fields.findIndex(
+        (field) => field.saleItemId === saleItemId,
+      )
+      if (indexToRemove !== -1) {
+        remove(indexToRemove)
+      }
       setOpenAlertDialog(false)
       queryClient.invalidateQueries({ queryKey: ['sales'] })
       toast.success('Item excluído com sucesso!')

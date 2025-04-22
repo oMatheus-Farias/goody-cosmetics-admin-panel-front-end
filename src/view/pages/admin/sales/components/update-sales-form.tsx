@@ -51,7 +51,7 @@ export function UpdateSalesForm({ sale, onOpenChange }: IUpdateSalesFormProps) {
       })),
     },
   })
-  const { fields } = useFieldArray({
+  const { fields, remove } = useFieldArray({
     control: form.control,
     name: 'items',
   })
@@ -160,6 +160,8 @@ export function UpdateSalesForm({ sale, onOpenChange }: IUpdateSalesFormProps) {
                 />
                 <DeleteSaleItemsAlertDialog
                   saleItemId={sale.items[index]?.saleItemId}
+                  fields={fields}
+                  remove={remove}
                 />
               </div>
 
