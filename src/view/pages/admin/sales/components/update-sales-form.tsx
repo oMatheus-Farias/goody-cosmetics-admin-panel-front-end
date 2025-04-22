@@ -130,7 +130,6 @@ export function UpdateSalesForm({ sale, onOpenChange }: IUpdateSalesFormProps) {
                             setDate(day)
                           }
                         }}
-                        initialFocus
                         locale={ptBR}
                       />
                     </div>
