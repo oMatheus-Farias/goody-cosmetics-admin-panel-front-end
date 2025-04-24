@@ -13,18 +13,20 @@ function Calendar({
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
-      className={cn(className)}
+      className={cn('p-2', className)}
       classNames={{
-        day: cn('hover:bg-gray-100 rounded focus:outline-none focus:ring-0'),
-        day_selected:
-          'bg-goodycosmetics-primary-500 text-white hover:bg-goodycosmetics-primary-600 focus:outline-none focus:ring-0', // Remove a borda azul
-        day_today: 'text-accent-foreground',
-        day_outside:
-          'text-muted-foreground aria-selected:text-muted-foreground',
-        day_disabled: 'text-muted-foreground opacity-50',
-        day_range_middle:
-          'aria-selected:bg-accent aria-selected:text-accent-foreground',
-        day_hidden: 'invisible',
+        day_button:
+          'px-2 py-1 w-full transition-all duration-150 hover:cursor-pointer ease-linear hover:bg-gray-200 focus:outline-none focus:ring-0 justify-center items-center rounded-md',
+        day: 'transition-all duration-150 hover:cursor-pointer ease-linear hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:ring-0 justify-center items-center rounded-md aria-selected:bg-goodycosmetics-primary-500 aria-selected:text-white',
+        month: 'text-center',
+        month_caption: 'mb-5 -mt-6 font-normal',
+        nav: 'flex items-center justify-between w-full pr-2 mb-2',
+        button_next:
+          'text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-0 transition-all duration-150 ease-linear hover:cursor-pointer',
+        button_previous:
+          'text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-0 transition-all duration-150 ease-linear hover:cursor-pointer',
+        weekday: 'text-center text-sm font-normal text-gray-500',
+        outside: 'text-gray-300',
         ...classNames,
       }}
       components={{
