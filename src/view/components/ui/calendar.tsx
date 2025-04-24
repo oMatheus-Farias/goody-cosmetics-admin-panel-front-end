@@ -18,6 +18,7 @@ function Calendar({
         day_button:
           'px-2 py-1 w-full transition-all duration-150 hover:cursor-pointer ease-linear hover:bg-gray-200 focus:outline-none focus:ring-0 justify-center items-center rounded-md',
         day: 'transition-all duration-150 hover:cursor-pointer ease-linear hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:ring-0 justify-center items-center rounded-md aria-selected:bg-goodycosmetics-primary-500 aria-selected:text-white',
+        today: 'text-goodycosmetics-primary-500',
         month: 'text-center',
         month_caption: 'mb-5 -mt-6 font-normal',
         nav: 'flex items-center justify-between w-full pr-2 mb-2',
