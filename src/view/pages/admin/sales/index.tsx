@@ -9,8 +9,7 @@ import MainContentHeader from '@/view/components/main-content-header'
 import { NoInformationInTable } from '@/view/components/no-information-in-table'
 import { SearchInput } from '@/view/components/search-input'
 
-import { CreateProductsModal } from '../products/components'
-import { SalesTable } from './components'
+import { CreateSalesModal, SalesTable } from './components'
 
 export default function SalesPage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -48,7 +47,7 @@ export default function SalesPage() {
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
           />
-          <CreateProductsModal open={modalOpen} onOpenChange={setModalOpen} />
+          <CreateSalesModal open={modalOpen} onOpenChange={setModalOpen} />
         </div>
       </MainContentHeader>
 
