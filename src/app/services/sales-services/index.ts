@@ -1,6 +1,7 @@
 import { httpClient } from '@/app/configs/http-client'
 
 import type {
+  ICreateSalesProps,
   IGetAllWithParamsProps,
   IGetAllWithParamsReturn,
   IUpdateSalesProps,
@@ -15,6 +16,12 @@ export class SalesServices {
       `/api/sales/params?pageIndex=${pageIndex}&searchTerm=${searchTerm}`,
     )
     return data
+  }
+  static async createSales(data: ICreateSalesProps) {
+    await httpClient.post('/api/sales', {
+      saleDate: data.saleDate,
+      items: data.items,
+    })
   }
   static async updateSales(data: IUpdateSalesProps) {
     await httpClient.patch(`/api/sales/${data.saleId}`, {
