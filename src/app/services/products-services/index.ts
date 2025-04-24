@@ -3,11 +3,16 @@ import { httpClient } from '@/app/configs/http-client'
 import type {
   IGetAllWithParamsProps,
   IGetAllWithParamsReturn,
+  IGetProductsReturn,
   IUpdateProductImageProps,
   IUpdateProps,
 } from './interfaces'
 
 export class ProductsServices {
+  static async getAllProducts() {
+    const { data } = await httpClient.get<IGetProductsReturn[]>('/api/products')
+    return data
+  }
   static async getAllProductsWithParams({
     pageIndex,
     searchTerm,
