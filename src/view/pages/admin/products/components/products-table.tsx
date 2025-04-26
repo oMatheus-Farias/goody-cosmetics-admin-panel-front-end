@@ -26,7 +26,7 @@ export function ProductsTable({
 
   return (
     <>
-      <Table>
+      <Table data-aos="zoom-in">
         <TableHeader>
           <TableRow className="text-sm">
             <TableHead className="w-60 font-light text-gray-400">

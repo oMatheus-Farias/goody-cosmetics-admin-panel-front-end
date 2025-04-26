@@ -9,7 +9,10 @@ import NavLink from '../nav-link'
 
 export default function SidebarMenu() {
   return (
-    <aside className="bg-goodycosmetics-primary-100 fixed z-10 hidden h-full w-44 flex-col py-2 lg:flex">
+    <aside
+      data-aos="fade-right"
+      className="bg-goodycosmetics-primary-100 fixed z-10 hidden h-full w-44 flex-col py-2 lg:flex"
+    >
       <div className="border-goodycosmetics-secondary-500 flex w-full items-center justify-center border-b pb-2">
         <img src={logoGoogyCosmetics} alt="Goody Cosméticos" className="w-16" />
       </div>

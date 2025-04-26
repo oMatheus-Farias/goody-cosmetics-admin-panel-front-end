@@ -25,7 +25,7 @@ export function CategoriesTable({
 
   return (
     <>
-      <Table>
+      <Table data-aos="zoom-in">
         <TableHeader>
           <TableRow className="text-sm">
             <TableHead className="w-[600px] font-light text-gray-400">

@@ -13,7 +13,10 @@ export default function HeaderDesktop() {
   const { handleSignOut, signOutPending, me, meIsLoading } = useAuth()
 
   return (
-    <header className="sticky top-0 z-10 hidden max-h-[49.5px] min-h-[49.5px] w-full items-center justify-between bg-white/80 px-5 backdrop-blur-xs lg:flex">
+    <header
+      data-aos="fade-down"
+      className="sticky top-0 z-10 hidden max-h-[49.5px] min-h-[49.5px] w-full items-center justify-between bg-white/80 px-5 backdrop-blur-xs lg:flex"
+    >
       <h1 className="text-base font-light text-gray-700">
         {meIsLoading ? (
           <Skeleton className="h-6 w-[180px] bg-gray-200" />

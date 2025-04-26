@@ -23,7 +23,7 @@ export function SalesTable({ sales, setSearchParams }: ISalesTableProps) {
 
   return (
     <>
-      <Table>
+      <Table data-aos="zoom-in">
         <TableHeader>
           <TableRow className="text-sm">
             <TableHead className="w-64 font-light text-gray-400 2xl:w-96">
