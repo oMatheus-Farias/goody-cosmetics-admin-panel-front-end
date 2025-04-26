@@ -43,7 +43,7 @@ export default function ProductsPage() {
       >
         <div className="flex w-full flex-col-reverse items-center gap-5 md:w-80 md:flex-row md:gap-2">
           <SearchInput
-            placeholder="Buscar produto"
+            placeholder="Buscar produto(s)"
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
           />
