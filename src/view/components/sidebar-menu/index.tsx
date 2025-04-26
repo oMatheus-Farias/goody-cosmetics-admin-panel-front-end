@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 
 import { env } from '@/app/configs/env-config'
 import { NAVIGATION_LINKS } from '@/app/constants/navigation-links'
+import { ROUTES_PATHS } from '@/app/constants/routes-paths'
 
 import catalogThumbnail from '../../assets/catalog-thumbnail.jpg'
 import logoGoogyCosmetics from '../../assets/logo.svg'
@@ -14,7 +15,13 @@ export default function SidebarMenu() {
       className="bg-goodycosmetics-primary-100 fixed z-10 hidden h-full w-44 flex-col py-2 lg:flex"
     >
       <div className="border-goodycosmetics-secondary-500 flex w-full items-center justify-center border-b pb-2">
-        <img src={logoGoogyCosmetics} alt="Goody Cosméticos" className="w-16" />
+        <Link to={ROUTES_PATHS.SALES} className="w-16">
+          <img
+            src={logoGoogyCosmetics}
+            alt="Goody Cosméticos"
+            className="w-full"
+          />
+        </Link>
       </div>
       <nav className="mt-7 flex w-full flex-1 flex-col gap-4 overflow-y-auto px-4 [&::-webkit-scrollbar]:hidden">
         <span className="text-goodycosmetics-primary-300 text-xs font-bold uppercase">
