@@ -294,7 +294,7 @@ export function CreateSalesForm({ onOpenChange }: TProps) {
                             htmlFor={`items.${index}.unitPrice`}
                             className="text-goodycosmetics-primary-700 text-xs font-normal uppercase"
                           >
-                            Preço (UNI)
+                            R$ (UNI)
                           </Label>
                           <div
                             className={`${form.formState.errors.items?.[index]?.unitPrice ? 'border-rose-500 has-focus-visible:ring-rose-300/80' : 'border-goodycosmetics-primary-400 has-focus:ring-goodycosmetics-primary-200'} relative flex h-12 items-center rounded-[10px] border bg-white pr-3 font-light has-focus:ring-[3px]`}
@@ -306,7 +306,7 @@ export function CreateSalesForm({ onOpenChange }: TProps) {
                               min={0}
                               aria-label="Preço unitário"
                               {...form.register(`items.${index}.unitPrice`)}
-                              className="border-none shadow-none placeholder:text-gray-400 focus-visible:border-none focus-visible:ring-0"
+                              className="border-none px-0.5 shadow-none placeholder:text-gray-400 focus-visible:border-none focus-visible:ring-0 sm:px-3"
                             />
                           </div>
                         </div>

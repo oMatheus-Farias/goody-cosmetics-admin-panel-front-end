@@ -12,7 +12,9 @@ export function NoInformationInTable({ title, description }: TProps) {
         <Search className="w-3.5" />
         <h1 className="text-center font-light text-gray-900">{title}</h1>
       </div>
-      <p className="text-sm font-light text-gray-500">{description}</p>
+      <p className="text-center text-sm font-light text-gray-500">
+        {description}
+      </p>
     </div>
   )
 }

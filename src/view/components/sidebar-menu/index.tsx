@@ -36,6 +36,8 @@ export default function SidebarMenu() {
       </nav>
       <Link
         to={env.VITE_CATALOG_URL}
+        target="_blank"
+        rel="noopener noreferrer"
         className="mx-auto max-w-40 min-w-40 overflow-hidden rounded-2xl"
       >
         <img
