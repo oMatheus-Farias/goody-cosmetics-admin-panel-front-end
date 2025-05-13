@@ -146,7 +146,11 @@ export default function LoginForm() {
             disabled={isPending}
             className="bg-goodycosmetics-primary-700 hover:bg-goodycosmetics-primary-800 h-12 w-full rounded-[10px] font-light uppercase transition-all duration-150 ease-linear hover:cursor-pointer"
           >
-            {isPending ? <LoaderCircle className="animate-spin" /> : 'Acessar'}
+            {isPending ? (
+              <LoaderCircle aria-label="Carregando" className="animate-spin" />
+            ) : (
+              'Acessar'
+            )}
           </Button>
         </div>
       </form>
