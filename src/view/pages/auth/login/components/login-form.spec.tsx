@@ -21,4 +21,19 @@ describe('LoginForm', () => {
     expect(screen.getByLabelText(/senha/i)).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /acessar/i })).toBeInTheDocument()
   })
+
+  it('should display error messages when trying to submit without filling in the required fields', async () => {
+    render(
+      <MemoryRouter>
+        <LoginForm />
+      </MemoryRouter>,
+    )
+    const button = screen.getByRole('button', { name: /acessar/i })
+    button.click()
+
+    expect(await screen.findByText(/E-mail inválido./i)).toBeInTheDocument()
+    expect(
+      await screen.findByText(/A senha deve ter no mínimo 8 caracteres./i),
+    ).toBeInTheDocument()
+  })
 })
