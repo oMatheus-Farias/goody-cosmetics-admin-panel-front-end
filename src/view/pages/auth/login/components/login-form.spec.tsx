@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { vi } from 'vitest'
 
@@ -59,5 +59,25 @@ describe('LoginForm', () => {
     expect(
       await screen.findByText(/A senha deve ter no mínimo 8 caracteres./i),
     ).toBeInTheDocument()
+  })
+
+  it('should toggle password visibility when the icon is clicked', async () => {
+    render(
+      <MemoryRouter>
+        <LoginForm />
+      </MemoryRouter>,
+    )
+    const passwordInput = screen.getByLabelText(/senha/i) as HTMLInputElement
+    const toggleIconShoul = screen.getByLabelText(/mostrar/i)
+
+    expect(passwordInput.type).toBe('password')
+
+    fireEvent.click(toggleIconShoul)
+    expect(passwordInput.type).toBe('text')
+
+    const toggleIconHidden = screen.getByLabelText(/ocultar/i)
+
+    fireEvent.click(toggleIconHidden)
+    expect(passwordInput.type).toBe('password')
   })
 })
