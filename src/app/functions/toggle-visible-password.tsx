@@ -17,13 +17,15 @@ export function toggleVisiblePassword({
     <>
       {isVisible ? (
         <EyeClosed
-          className={cn('w-5 text-gray-500 hover:cursor-pointer', className)}
+          aria-label="Ocultar"
           onClick={() => setIsVisible(false)}
+          className={cn('w-5 text-gray-500 hover:cursor-pointer', className)}
         />
       ) : (
         <Eye
-          className={cn('w-5 text-gray-500 hover:cursor-pointer', className)}
+          aria-label="Mostrar"
           onClick={() => setIsVisible(true)}
+          className={cn('w-5 text-gray-500 hover:cursor-pointer', className)}
         />
       )}
     </>
