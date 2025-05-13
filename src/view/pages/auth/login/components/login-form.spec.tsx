@@ -80,4 +80,31 @@ describe('LoginForm', () => {
     fireEvent.click(toggleIconHidden)
     expect(passwordInput.type).toBe('password')
   })
+
+  it('should disable the submit button and show loader while submitting', async () => {
+    vi.mock('../functions/handle-login', () => ({
+      handleLogin: vi.fn(
+        () => new Promise((resolve) => setTimeout(resolve, 100)),
+      ),
+    }))
+
+    render(
+      <MemoryRouter>
+        <LoginForm />
+      </MemoryRouter>,
+    )
+    const emailInput = screen.getByLabelText(/e-mail/i) as HTMLInputElement
+    const passwordInput = screen.getByLabelText(/senha/i) as HTMLInputElement
+    const button = screen.getByRole('button', { name: /acessar/i })
+
+    fireEvent.input(emailInput, { target: { value: 'teste@email.com' } })
+    fireEvent.input(passwordInput, { target: { value: 'Teste@123' } })
+    fireEvent.click(button)
+
+    expect(button).toBeDisabled()
+    expect(screen.getByLabelText(/carregando/i)).toBeInTheDocument()
+
+    await new Promise((resolve) => setTimeout(resolve, 120))
+    vi.unmock('../functions/handle-login')
+  })
 })
