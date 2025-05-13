@@ -36,4 +36,28 @@ describe('LoginForm', () => {
       await screen.findByText(/A senha deve ter no mínimo 8 caracteres./i),
     ).toBeInTheDocument()
   })
+
+  it('should display an error message for invalid email format', async () => {
+    render(
+      <MemoryRouter>
+        <LoginForm />
+      </MemoryRouter>,
+    )
+    const emailInput = screen.getByLabelText(/e-mail/i) as HTMLInputElement
+    const passwordInput = screen.getByLabelText(/senha/i) as HTMLInputElement
+    const button = screen.getByRole('button', { name: /acessar/i })
+
+    emailInput.focus()
+    emailInput.value = 'email-invalido'
+    emailInput.dispatchEvent(new Event('input', { bubbles: true }))
+    passwordInput.focus()
+    passwordInput.value = '12345678'
+    passwordInput.dispatchEvent(new Event('input', { bubbles: true }))
+    button.click()
+
+    expect(await screen.findByText(/E-mail inválido./i)).toBeInTheDocument()
+    expect(
+      await screen.findByText(/A senha deve ter no mínimo 8 caracteres./i),
+    ).toBeInTheDocument()
+  })
 })
