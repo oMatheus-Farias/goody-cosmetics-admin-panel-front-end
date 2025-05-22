@@ -52,7 +52,7 @@ export default function AuthProvider({
           localStorage.getItem(STORAGE_KEYS.REFRESH_TOKEN) as string,
         )
 
-        if (originalRequest.url === 'api/refresh-tokens') {
+        if (originalRequest.url === '/api/refresh-tokens') {
           setSignedIn(false)
           localStorage.removeItem(STORAGE_KEYS.ACCESS_TOKEN)
           localStorage.removeItem(STORAGE_KEYS.REFRESH_TOKEN)
