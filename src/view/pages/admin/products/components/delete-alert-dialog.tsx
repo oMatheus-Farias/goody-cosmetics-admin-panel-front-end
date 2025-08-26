@@ -1,4 +1,5 @@
 import { useQueryClient } from '@tanstack/react-query'
+import { AxiosError } from 'axios'
 import { LoaderCircle, Trash2 } from 'lucide-react'
 import { useState } from 'react'
 import { toast } from 'sonner'
@@ -42,6 +43,12 @@ export function DeleteAlertDialog({ onOpenChange, productId }: TProps) {
     } catch (error) {
       if (env.VITE_NODE_ENV !== 'production') {
         console.error('Error deleting product:', error)
+      }
+      if (error instanceof AxiosError && error.response?.status === 409) {
+        toast.error(
+          'Este produto não pode ser excluído, pois já foi registrado em uma venda.',
+        )
+        return
       }
       toast.error('Erro ao excluir produto. Tente novamente mais tarde.')
     }
