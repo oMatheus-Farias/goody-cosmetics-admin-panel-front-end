@@ -21,7 +21,12 @@ export default function App() {
         <QueryClientProvider client={queryClient}>
           <AuthProvider>
             <AppRoutes />
-            <Toaster />
+            <Toaster
+              richColors={true}
+              position="top-center"
+              duration={6000}
+              theme="light"
+            />
           </AuthProvider>
         </QueryClientProvider>
       </BrowserRouter>
